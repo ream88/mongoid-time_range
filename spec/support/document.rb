@@ -1,9 +1,5 @@
 class Document
   include Mongoid::Document
 
-end
-
-class Localized
-  include Mongoid::Document
-
+  field :range, type: Mongoid::TimeRange
 end
