@@ -38,11 +38,6 @@
 <div class="highlight"><pre><span class="n">gem</span> <span class="s1">'mongoid-time_range'</span>
 </pre></div>
 
-<p>If you want to use ::TimeRange instead of Mongoid::TimeRange, your Gemfile must include a additional require statement:</p>
-
-<div class="highlight"><pre><span class="n">gem</span> <span class="s1">'mongoid-time_range'</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="s1">'mongoid/time_range/global'</span>
-</pre></div>
-
 <h2>Usage</h2>
 
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Document</span>
@@ -57,6 +52,20 @@
 
 <span class="n">year2013</span> <span class="o">=</span> <span class="no">Document</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">range</span><span class="p">:</span> <span class="p">{</span> <span class="n">from</span><span class="p">:</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">at_beginning_of_year</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">end_of_year</span> <span class="p">})</span>
 <span class="n">year2013</span><span class="o">.</span><span class="n">range</span> <span class="c1"># =&gt; { from: 2013-01-01 00:00:00 +0100, to: 2013-12-31 23:59:59 +0100 }</span>
+</pre></div>
+
+<p>If you want to use <code>TimeRange</code> directly instead of <code>Mongoid::TimeRange</code>:</p>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Document</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:range</span><span class="p">,</span> <span class="n">type</span><span class="p">:</span> <span class="no">TimeRange</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>… your Gemfile must include a additional require statement:</p>
+
+<div class="highlight"><pre><span class="n">gem</span> <span class="s1">'mongoid-time_range'</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="s1">'mongoid/time_range/global'</span>
 </pre></div>
 
 <h2>Contributing</h2>
