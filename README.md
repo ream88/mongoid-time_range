@@ -36,6 +36,7 @@ class Document
 
   field :range, type: TimeRange
 end
+```
 
 … your Gemfile must include a additional require statement:
 
