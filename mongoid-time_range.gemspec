@@ -1,9 +1,9 @@
 $: << File.expand_path('../lib', __FILE__)
-# require 'mongoid/time_range/version'
+require 'mongoid/time_range/version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'mongoid-time_range'
-  gem.version       = '0.0.1'
+  gem.version       = Mongoid::TimeRange::VERSION
   gem.authors       = 'Mario Uher'
   gem.email         = 'uher.mario@gmail.com'
   gem.homepage      = 'https://github.com/haihappen/mongoid-time_range'
@@ -13,5 +13,6 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split("\n")
   gem.require_path  = 'lib'
 
+  gem.add_dependency 'activesupport'
   gem.add_dependency 'mongoid'
 end
