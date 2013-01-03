@@ -8,11 +8,15 @@ class Mongoid::TimeRange < Struct.new(:from, :to)
   end
 
   def mongoize
-    Mongoid::TimeRange.mongoize(self)
+    self.class.mongoize(self)
   end
 
   def ==(other)
     self.from == other.from && self.to == other.to
+  end
+
+  def to_h
+    { from: from, to: to }
   end
 
   def to_a
@@ -21,13 +25,14 @@ class Mongoid::TimeRange < Struct.new(:from, :to)
 
   class << self
     def mongoize(object)
-      %w[from to].associate { |key| object[key.to_sym].mongoize }
+      [:from, :to].associate { |key| Time.mongoize(object[key]) }
     end
 
     def demongoize(hash)
-      times = hash.values.map { |time| Time.demongoize(time) }
+      hash ||= {}
+      hash = [:from, :to].associate { |key| Time.demongoize(hash[key]) }
       
-      Mongoid::TimeRange.new(*times)
+      new(*hash.values)
     end
   end
 end

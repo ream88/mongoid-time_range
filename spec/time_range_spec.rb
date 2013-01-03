@@ -65,7 +65,7 @@ describe Mongoid::TimeRange do
 
     describe 'having both from and to' do
       it 'returns database friendly value' do
-        value.must_equal 'from' => from.mongoize, 'to' => to.mongoize
+        value.must_equal from: from.mongoize, to: to.mongoize
       end
     end
 
@@ -75,7 +75,7 @@ describe Mongoid::TimeRange do
 
 
       it 'returns database friendly value' do
-        value.must_equal 'from' => from.mongoize, 'to' => nil
+        value.must_equal from: from.mongoize, to: nil
       end
     end
   end
@@ -88,7 +88,7 @@ describe Mongoid::TimeRange do
 
       describe 'having both from and to' do
         it 'returns database friendly value' do
-          value.must_equal 'from' => from.mongoize, 'to' => to.mongoize
+          value.must_equal from: from.mongoize, to: to.mongoize
         end
       end
 
@@ -98,7 +98,7 @@ describe Mongoid::TimeRange do
 
 
         it 'returns database friendly value' do
-          value.must_equal 'from' => from.mongoize, 'to' => nil
+          value.must_equal from: from.mongoize, to: nil
         end
       end
     end
@@ -110,7 +110,7 @@ describe Mongoid::TimeRange do
 
       describe 'having both from and to' do
         it 'returns database friendly value' do
-          value.must_equal 'from' => from.mongoize, 'to' => to.mongoize
+          value.must_equal from: from.mongoize, to: to.mongoize
         end
       end
 
@@ -120,7 +120,7 @@ describe Mongoid::TimeRange do
 
 
         it 'returns database friendly value' do
-          value.must_equal 'from' => from.mongoize, 'to' => nil
+          value.must_equal from: from.mongoize, to: nil
         end
       end
     end
@@ -128,7 +128,7 @@ describe Mongoid::TimeRange do
 
 
   describe 'self.demongoize' do
-    let(:value) { Mongoid::TimeRange.demongoize('from' => from, 'to' => to) }
+    let(:value) { Mongoid::TimeRange.demongoize(from: from, to: to) }
 
 
     describe 'having both from and to' do
