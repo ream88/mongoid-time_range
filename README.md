@@ -10,6 +10,12 @@ In your Gemfile:
 gem 'mongoid-time_range'
 ```
 
+If you want to use ::TimeRange instead of Mongoid::TimeRange, your Gemfile must include a additional require statement:
+
+```ruby
+gem 'mongoid-time_range', require: 'mongoid/time_range/global'
+```
+
 ## Usage
 
 ```ruby
@@ -22,10 +28,10 @@ end
 
 ```ruby
 document = Document.create
-document.range # => 
+document.range # => { from: 2013-01-01 00:00:00 +0100, to: nil }
 
 year2013 = Document.create(range: { from: Time.now.at_beginning_of_year, to: Time.now.end_of_year })
-year2013.range # =>
+year2013.range # => { from: 2013-01-01 00:00:00 +0100, to: 2013-12-31 23:59:59 +0100 }
 ```
 
 ## Contributing

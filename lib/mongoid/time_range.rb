@@ -23,6 +23,10 @@ class Mongoid::TimeRange < Struct.new(:from, :to)
     [from, to]
   end
 
+  def inspect
+    to_h.inspect
+  end
+
   class << self
     def mongoize(object)
       [:from, :to].associate { |key| Time.mongoize(object[key]) }
