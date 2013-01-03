@@ -1,4 +1,4 @@
-module Enumerable # Remove me as soon as it is integrated into ActiveSupport.
+module Enumerable # Remove this as soon as it is integrated into ActiveSupport.
   # Associates keys with values and returns a Hash.
   #
   # If you have an enumerable of keys and want to associate them with values,
