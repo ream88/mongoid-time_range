@@ -1,6 +1,4 @@
-require 'active_support'
 require 'enumerable/associate'
-require 'mongoid'
 
 module Mongoid
   class TimeRange < Struct.new(:from, :to)

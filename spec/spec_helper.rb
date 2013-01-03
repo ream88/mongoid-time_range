@@ -6,7 +6,7 @@ require 'minitest/spec'
 
 require 'mongoid/time_range'
 
-require 'active_support/all'
+require 'mongoid'
 require 'timecop'
 
 # Load support *.rb files in ./support
