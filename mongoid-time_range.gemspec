@@ -13,5 +13,6 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split("\n")
   gem.require_path  = 'lib'
 
+  gem.add_dependency 'activesupport'
   gem.add_dependency 'mongoid'
 end

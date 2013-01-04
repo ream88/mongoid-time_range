@@ -1,10 +1,15 @@
+require 'active_support/all'
 require 'enumerable/associate'
+require 'mongoid'
 
 module Mongoid
-  class TimeRange < Struct.new(:from, :to)
-    def initialize(*)
-      super
-      self.from ||= Time.now
+  class TimeRange
+    attr_accessor :from, :to
+    delegate :inspect, :[], to: :to_h
+
+    def initialize(from = nil, to = nil)
+      self.from = from || Time.now
+      self.to = to
     end
 
     def mongoize
@@ -23,10 +28,6 @@ module Mongoid
       [from, to]
     end
 
-    def inspect
-      to_h.inspect
-    end
-
     class << self
       def mongoize(object)
         [:from, :to].associate { |key| Time.mongoize(object[key]) }
@@ -34,6 +35,7 @@ module Mongoid
 
       def demongoize(hash)
         hash ||= {}
+        hash = hash.symbolize_keys
         hash = [:from, :to].associate { |key| Time.demongoize(hash[key]) }
         
         new(*hash.values)
