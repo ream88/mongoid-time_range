@@ -18,7 +18,7 @@ describe 'Mongoid::TimeRange integration' do
 
 
       it 'sets from to current time and to to nil' do
-        subject.range.to_hash.must_equal from: Time.now, to: nil
+        subject.range.must_equal from: Time.now, to: nil
       end
     end
   end
@@ -29,7 +29,7 @@ describe 'Mongoid::TimeRange integration' do
 
 
     it 'sets from to given time and to to nil' do
-      subject.range.to_hash.must_equal from: Time.now.beginning_of_year, to: nil
+      subject.range.must_equal from: Time.now.beginning_of_year, to: nil
     end
   end
 
@@ -39,7 +39,7 @@ describe 'Mongoid::TimeRange integration' do
 
 
     it 'sets from and to to given time' do
-      subject.range.to_hash.must_equal from: Time.now.beginning_of_year, to: Time.now.end_of_year
+      subject.range.must_equal from: Time.now.beginning_of_year, to: Time.now.end_of_year
     end
   end
 
