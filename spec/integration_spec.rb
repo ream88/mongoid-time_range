@@ -9,7 +9,17 @@ describe 'Mongoid::TimeRange integration' do
 
 
     it 'sets from to current time and to to nil' do
-      subject.range.to_h.must_equal from: Time.now, to: nil
+      subject.range.must_be_nil
+    end
+
+
+    describe 'when default is set to ->{ TimeRange.new }' do
+      subject { DocumentWithDefault.create }
+
+
+      it 'sets from to current time and to to nil' do
+        subject.range.to_h.must_equal from: Time.now, to: nil
+      end
     end
   end
 

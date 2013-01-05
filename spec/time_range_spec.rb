@@ -1,15 +1,13 @@
 require_relative 'spec_helper'
 
 describe Mongoid::TimeRange do
-  let(:from) { Time.now }
-  let(:to) { from + 1.day }
+  before { Timecop.freeze }
+  let(:from) { Time.now.beginning_of_year }
+  let(:to) { Time.now.end_of_year }
   subject { Mongoid::TimeRange.new(from, to) }
 
 
   describe :initialize do
-    before { Timecop.freeze }
-
-
     describe 'without any arguments' do
       subject { Mongoid::TimeRange.new }
 
@@ -53,9 +51,6 @@ describe Mongoid::TimeRange do
         subject.to.must_equal to
       end
     end
-
-
-    after { Timecop.return }
   end
 
 
@@ -157,4 +152,7 @@ describe Mongoid::TimeRange do
       value.must_equal [from, to]
     end
   end
+
+
+  after { Timecop.return }
 end

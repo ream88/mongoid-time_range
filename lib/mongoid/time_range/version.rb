@@ -1,5 +1,5 @@
 module Mongoid
-  class TimeRange
+  class TimeRange < Hash
     VERSION = '0.2.0'
   end
 end

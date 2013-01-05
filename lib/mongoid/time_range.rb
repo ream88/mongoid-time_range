@@ -3,29 +3,27 @@ require 'enumerable/associate'
 require 'mongoid'
 
 module Mongoid
-  class TimeRange
-    attr_accessor :from, :to
-    delegate :inspect, :[], to: :to_h
-
-    def initialize(from = nil, to = nil)
-      self.from = from || Time.now
-      self.to = to
+  class TimeRange < Hash
+    def initialize(from = Time.now, to = nil)
+      merge!(from: from, to: to)
     end
+
+    alias_method :to_a, :values
 
     def mongoize
       self.class.mongoize(self)
     end
 
-    def ==(other)
-      self.from == other.from && self.to == other.to
-    end
-
     def to_h
-      { from: from, to: to }
+      self
     end
 
-    def to_a
-      [from, to]
+    def from
+      self[:from]
+    end
+
+    def to
+      self[:to]
     end
 
     class << self
@@ -34,11 +32,12 @@ module Mongoid
       end
 
       def demongoize(hash)
-        hash ||= {}
+        return nil if hash.nil?
+        
         hash = hash.symbolize_keys
         hash = [:from, :to].associate { |key| Time.demongoize(hash[key]) }
         
-        new(*hash.values)
+        new.merge(hash)
       end
     end
   end
