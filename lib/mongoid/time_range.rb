@@ -24,14 +24,14 @@ module Mongoid
 
     class << self
       def mongoize(object)
-        [:from, :to].associate { |key| Time.mongoize(object[key]) }
+        %i[from to].associate { |key| Time.mongoize(object[key]) }
       end
 
       def demongoize(hash)
         return nil if hash.nil?
         
         hash = hash.symbolize_keys
-        hash = [:from, :to].associate { |key| Time.demongoize(hash[key]) }
+        hash = %i[from to].associate { |key| Time.demongoize(hash[key]) }
         
         new.merge(hash)
       end
