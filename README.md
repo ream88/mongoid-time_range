@@ -16,7 +16,7 @@ gem 'mongoid-time_range'
 class Document
   include Mongoid::Document
 
-  field :range, type: Mongoid::TimeRange, default: ->{ TimeRange.new }
+  field :range, type: Mongoid::TimeRange, default: ->{ Mongoid::TimeRange.new }
 end
 ```
 
