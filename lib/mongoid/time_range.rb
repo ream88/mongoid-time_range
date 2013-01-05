@@ -14,10 +14,6 @@ module Mongoid
       self.class.mongoize(self)
     end
 
-    def to_h
-      self
-    end
-
     def from
       self[:from]
     end
