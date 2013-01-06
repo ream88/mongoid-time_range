@@ -13,11 +13,21 @@ describe 'Mongoid::TimeRange integration' do
     end
 
 
-    describe 'when default is set to ->{ TimeRange.new }' do
-      subject { DocumentWithDefault.create }
+    describe 'when default is set to from: Time.now }' do
+      subject { DocumentWithImplicitDefault.create }
 
 
-      it 'sets from to current time and to to nil' do
+      it 'sets from to current time and to to ni' do
+        subject.range.must_equal from: Time.now, to: nil
+      end
+    end
+
+
+    describe 'when default is set to ->{ Mongoid::TimeRange.new(from: Time.now) }' do
+      subject { DocumentWithExplicitDefault.create }
+
+
+      it 'sets from to current time and to to ni' do
         subject.range.must_equal from: Time.now, to: nil
       end
     end

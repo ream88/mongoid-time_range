@@ -4,8 +4,14 @@ class Document
   field :range, type: Mongoid::TimeRange
 end
 
-class DocumentWithDefault
+class DocumentWithImplicitDefault
   include Mongoid::Document
 
-  field :range, type: Mongoid::TimeRange, default: ->{ TimeRange.new }
+  field :range, type: Mongoid::TimeRange, default: ->{ { from: Time.now } }
+end
+
+class DocumentWithExplicitDefault
+  include Mongoid::Document
+
+  field :range, type: Mongoid::TimeRange, default: -> { Mongoid::TimeRange.new(Time.now) }
 end

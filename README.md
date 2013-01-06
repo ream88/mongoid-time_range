@@ -1,6 +1,6 @@
 # mongoid-time_range
 
-Mongoid::TimeRange defines a TimeRange type for your Mongoid apps, which is an object with `from` and `to` keys.
+`Mongoid::TimeRange` defines a time range type for your Mongoid apps, which is stored internally as a hash with `from` and `to` keys.
 
 ## Installation
 
@@ -16,14 +16,11 @@ gem 'mongoid-time_range'
 class Document
   include Mongoid::Document
 
-  field :range, type: Mongoid::TimeRange, default: ->{ TimeRange.new }
+  field :range, type: Mongoid::TimeRange
 end
 ```
 
 ```ruby
-document = Document.create
-document.range # => { from: 2013-01-01 00:00:00 +0100, to: nil }
-
 year2013 = Document.create(range: { from: Time.now.at_beginning_of_year, to: Time.now.end_of_year })
 year2013.range # => { from: 2013-01-01 00:00:00 +0100, to: 2013-12-31 23:59:59 +0100 }
 ```

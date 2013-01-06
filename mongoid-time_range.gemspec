@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.authors       = 'Mario Uher'
   gem.email         = 'uher.mario@gmail.com'
   gem.homepage      = 'https://github.com/haihappen/mongoid-time_range'
-  gem.summary       = 'TimeRange type for Mongoid.'
+  gem.summary       = 'Time range type for Mongoid.'
   gem.description   = 'Mongoid::TimeRange defines a TimeRange type for your Mongoid apps.'
 
   gem.files         = `git ls-files`.split("\n")
