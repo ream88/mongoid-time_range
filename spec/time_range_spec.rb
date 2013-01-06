@@ -54,6 +54,30 @@ describe Mongoid::TimeRange do
   end
 
 
+  describe 'getters' do
+    it 'responds to from' do
+      subject.must_respond_to :from
+    end
+
+
+    it 'responds to to' do
+      subject.must_respond_to :to
+    end
+  end
+
+
+  describe 'setters' do
+    it 'responds to from=' do
+      subject.must_respond_to :from=
+    end
+
+
+    it 'responds to to=' do
+      subject.must_respond_to :to=
+    end
+  end
+
+
   describe :mongoize do
     let(:value) { subject.mongoize }
 

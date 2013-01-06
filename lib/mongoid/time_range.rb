@@ -8,18 +8,20 @@ module Mongoid
       merge!(from: from, to: to)
     end
 
+    [:from, :to].each do |key|
+      define_method key do
+        self[key]
+      end
+      
+      define_method :"#{key}=" do |value|
+        self[key] = value
+      end
+    end
+
     alias_method :to_a, :values
 
     def mongoize
       self.class.mongoize(self)
-    end
-
-    def from
-      self[:from]
-    end
-
-    def to
-      self[:to]
     end
 
     class << self
