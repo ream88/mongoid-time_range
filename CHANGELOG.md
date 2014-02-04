@@ -1,3 +1,6 @@
+# 0.4.0 (January 06, 2013)
+* Adds setters.
+
 # 0.3.0 (January 05, 2013)
 * TimeRange is now based on Hash.
 
