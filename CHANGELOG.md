@@ -1,3 +1,9 @@
+# 0.5.0 (unreleased)
+* Simplifies tests a lot.
+
+# 0.4.1 (February 4, 2014)
+* Locks on mongoid ~> 3.0.
+
 # 0.4.0 (January 06, 2013)
 * Adds setters.
 
