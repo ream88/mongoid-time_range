@@ -1,5 +1,6 @@
-# 0.5.0 (unreleased)
+# 0.5.0 (Febrary 4, 2014)
 * Simplifies tests a lot.
+* Removes (direct) active_support dependency.
 
 # 0.4.1 (February 4, 2014)
 * Locks on mongoid ~> 3.0.
