@@ -4,14 +4,14 @@ require 'mongoid'
 module Mongoid
   class TimeRange < Hash
     def initialize(from = Time.now, to = nil)
-      merge!(from: from, to: to)
+      merge! from: from, to: to
     end
 
     [:from, :to].each do |key|
       define_method key do
         self[key]
       end
-      
+
       define_method :"#{key}=" do |value|
         self[key] = value
       end
@@ -29,8 +29,7 @@ module Mongoid
       end
 
       def demongoize(hash)
-        return nil if hash.nil?
-        
+        return if hash.nil?
         hash = hash.symbolize_keys
 
         new(Time.demongoize(hash[:from]), Time.demongoize(hash[:to]))
