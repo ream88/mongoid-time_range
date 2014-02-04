@@ -1,5 +1,4 @@
 require 'active_support/all'
-require 'enumerable/associate'
 require 'mongoid'
 
 module Mongoid
@@ -26,16 +25,15 @@ module Mongoid
 
     class << self
       def mongoize(object)
-        [:from, :to].associate { |key| Time.mongoize(object[key]) }
+        { from: Time.mongoize(object[:from]), to: Time.mongoize(object[:to]) }
       end
 
       def demongoize(hash)
         return nil if hash.nil?
         
         hash = hash.symbolize_keys
-        hash = [:from, :to].associate { |key| Time.demongoize(hash[key]) }
-        
-        new.merge(hash)
+
+        new(Time.demongoize(hash[:from]), Time.demongoize(hash[:to]))
       end
     end
   end
