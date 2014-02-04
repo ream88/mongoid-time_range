@@ -4,4 +4,3 @@ gemspec
 
 gem 'minitest'
 gem 'rake'
-gem 'timecop'
