@@ -4,5 +4,3 @@ test:
       database: mongoid_time_range_test
       hosts:
         - localhost:27017
-      options:
-        consistency: :strong
