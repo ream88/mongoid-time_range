@@ -6,7 +6,7 @@ class Document
   field :range, type: Mongoid::TimeRange
 end
 
-class IntegrationTest < Minitest::Test
+class IntegrationTest < Minitest::Unit::TestCase
   def test_it_initializes_with_nil
     assert_nil Document.create.range
   end

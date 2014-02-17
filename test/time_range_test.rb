@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class TimeRangeTest < Minitest::Test
+class TimeRangeTest < Minitest::Unit::TestCase
   def freeze_time(&block)
     Time.stub :now, Time.at(Time.now) do
       yield
